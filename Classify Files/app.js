@@ -7,6 +7,7 @@ if (!directoryPath) {
   console.error;
 }
 
+//디렉토리에 있는 파일들 읽어오기
 fs.readdir(directoryPath, function (err, files) {
   if (err) {
     console.error;
@@ -19,6 +20,7 @@ fs.readdir(directoryPath, function (err, files) {
   moveFile(files);
 });
 
+//폴더 생성하기
 const folderAdd = (folderName, files) => {
   if (!files.includes(folderName)) {
     fs.mkdir(path.join(directoryPath, folderName), (err) => {
@@ -33,6 +35,7 @@ const folderAdd = (folderName, files) => {
   }
 };
 
+//파일 분류 후 폴더로 이동
 const moveFile = (files) => {
   files.forEach((file) => {
     let temp = file.split(".");
